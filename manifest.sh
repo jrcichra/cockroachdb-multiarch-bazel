@@ -2,7 +2,7 @@
 set -x
 
 # env vars
-export SHA="sha-${SHA::7}"
+export SHA="sha-${SHA::8}"
 # pull the containers
 docker pull ghcr.io/jrcichra/cockroach-linux:${SHA}
 docker pull ghcr.io/jrcichra/cockroach-linuxarm:${SHA}
