@@ -24,6 +24,11 @@ jobs:
       - name: Prepare
         id: prep
         run: |
+          if [ "${arch}" == "linux" ]; then
+            DOCKERARCH=linux/amd64
+          elif [ "${arch}" == "linuxarm" ]; then
+            DOCKERARCH=linux/arm64
+          fi
           DOCKER_IMAGE=ghcr.io/jrcichra/cockroach-${arch}
           VERSION=noop
           if [ "${{ github.event_name }}" = "schedule" ]; then
@@ -48,6 +53,7 @@ jobs:
           fi
           echo ::set-output name=version::${VERSION}
           echo ::set-output name=tags::${TAGS}
+          echo ::set-output name=dockerarch::${DOCKERARCH}
           echo ::set-output name=created::$(date -u +'%Y-%m-%dT%H:%M:%SZ')
         env:
           arch: ${{ matrix.arch }}
@@ -78,7 +84,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: ${{ steps.prep.outputs.dockerarch }}
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.prep.outputs.tags }}
           labels: |
