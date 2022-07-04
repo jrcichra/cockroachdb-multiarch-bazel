@@ -10,7 +10,7 @@ docker pull ghcr.io/jrcichra/cockroach-linuxarm:${SHA}
 #https://www.docker.com/blog/multi-arch-build-and-images-the-simple-way/
 
 # update the current sha on the base image
-docker manifest create ghcr.io/jrcichra/tira_backend:${SHA} \
+docker manifest create ghcr.io/jrcichra/cockroach:${SHA} \
     --amend ghcr.io/jrcichra/cockroach-linux:${SHA} \
     --amend ghcr.io/jrcichra/cockroach-linuxarm:${SHA}
 docker manifest push ghcr.io/jrcichra/cockroach:${SHA}
