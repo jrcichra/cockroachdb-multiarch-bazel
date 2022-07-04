@@ -65,7 +65,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: "~/.cache/bazel"
-          key: cockroachdb-bazel-cache
+          key: cockroachdb-bazel-cache-${{ matrix.arch }}
       - name: Build CockroachDB
         run: bash build.sh $arch
         env:
