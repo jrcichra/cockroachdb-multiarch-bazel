@@ -1,2 +1,4 @@
 # cockroachdb-multiarch-bazel
-Attempt at building cockroachdb for amd64 &amp; arm64 with bazel in Github Actions
+Actions for building a multi-arch cockroachdb binaries / containers
+
+Deploy cockroachdb in an all arm64 or arm64/amd64 mixed Kubernetes cluster.
