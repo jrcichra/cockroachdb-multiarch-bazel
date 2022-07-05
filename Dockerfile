@@ -1,3 +1,4 @@
 FROM ubuntu:22.04
-COPY cockroach/artifacts/cockroach /cockroach
-ENTRYPOINT [ "/cockroach" ]
+RUN mkdir /cockroach
+COPY cockroach/artifacts/cockroach /cockroach/cockroach
+ENTRYPOINT [ "/cockroach/cockroach" ]
