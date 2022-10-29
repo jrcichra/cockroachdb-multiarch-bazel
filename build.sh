@@ -1,7 +1,7 @@
 #!/bin/bash
 set -x
 echo "Got architecture $1..."
-git clone --branch v22.1.9 https://github.com/cockroachdb/cockroach
+git clone --branch v22.1.10 https://github.com/cockroachdb/cockroach
 cd cockroach
 echo "build --config=crosslinux
 build --config nolintonbuild
